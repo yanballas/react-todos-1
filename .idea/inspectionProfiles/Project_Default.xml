@@ -1,0 +1,11 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Stylelint" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="com.intellij.reactbuddy.ArrayToJSXMapInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.intellij.reactbuddy.EmptyAttributeInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.intellij.reactbuddy.EmptyRefInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.intellij.reactbuddy.ExhaustiveDepsInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="com.intellij.reactbuddy.PaletteExtLocalInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+  </profile>
+</component>
