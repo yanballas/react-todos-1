@@ -1,44 +1,39 @@
-import {initialTodos} from "./constants";
-import TodoList from "./TodoList";
+import {NavLink, Outlet} from "react-router-dom";
 import {useState} from "react";
-import TodoAdd from "./TodoAdd";
 
 function App() {
   
-  const [todos, setTodos] = useState(initialTodos);
+  const [showMenu, setShowMenu] = useState(false);
   
-  const completeTodo = (key) => {
-    const newTodos = [...todos];
-    const deal = newTodos.find(item => key === item.key);
-    if (deal) {
-      deal.done = true;
-      setTodos(newTodos);
-    }
-  };
-  
-  const addTodo = (newTodo) => {
-    if (newTodo) {
-      setTodos([...todos, newTodo])
-    }
-  };
-  
-  const removeTodo = (key) => {
-    const newTodos = todos.filter(item => key !== item.key);
-    setTodos(newTodos);
+  const handleBurgerClick = (e) => {
+    e.preventDefault();
+    setShowMenu(!showMenu);
   };
   
   return (
     <div className="container">
-      <nav className="navbar is-light">
-        <ul className="navbar-brand px-2">
-          <li className="navbar-item is-uppercase">
-            react-todos-1
-          </li>
-        </ul>
+      <nav className="navbar is-dark px-4 py-2">
+        <div className="navbar-brand">
+            <NavLink to="/" className={({ isActive }) => 'navbar-item is-uppercase' + (isActive ? ' is-active' : '')}>
+              react-todos-1
+            </NavLink>
+            <a href="/" className={showMenu ? 'navbar-burger is-active' : 'navbar-burger'} onClick={handleBurgerClick}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+        </div>
+        <div className={showMenu ? 'navbar-menu is-active' : 'navbar-menu'} onClick={handleBurgerClick}>
+          <div className="navbar-start">
+            <NavLink to="/add" className={({ isActive }) => 'navbar-item is-uppercase' + (isActive ? ' is-active' : '')}>
+              add new Todo
+            </NavLink>
+             </div>
+        </div>
       </nav>
       <main className="content px-6 py-6">
-        <TodoList list={todos} completeTodo={completeTodo} removeTodo={removeTodo}/>
-        <TodoAdd add={addTodo}/>
+        <Outlet />
       </main>
     </div>
   );

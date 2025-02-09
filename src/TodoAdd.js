@@ -1,18 +1,17 @@
 import {useState} from "react";
+import {useSubmit} from "react-router-dom";
 
-export default function TodoAdd(props) {
+export default function TodoAdd() {
 	
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
 	const [image, setImage] = useState("");
 	
+	const submit = useSubmit();
+	
 	const handleFormSubmit = (e) => {
 		e.preventDefault();
-		const newDeal = {title, desc, image, done: false};
-		const date = new Date();
-		newDeal.createdAt = date.toLocaleString();
-		newDeal.key = date.getTime();
-		props.add(newDeal);
+		submit({title, desc, image}, {action: '/add', method: 'POST'});
 		e.target.reset();
 	}
 	
